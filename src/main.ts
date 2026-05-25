@@ -1,9 +1,18 @@
 import { Engine } from './Engine';
+import { PropertiesPanel } from './UI';
 
-// Boot up the 3D application core
+// 1. Initialize Engine Core
 const App = new Engine();
 
-// Bind UI actions to our geometric primitive generation
+// 2. Initialize Properties Layout Panel
+const Inspector = new PropertiesPanel('gui-container');
+
+// 3. Connect Engine events to UI updates
+App.onSelectionChanged((selectedMesh) => {
+    Inspector.inspectObject(selectedMesh);
+});
+
+// 4. Bind Add Buttons
 document.getElementById('add-cube')?.addEventListener('click', () => {
     App.spawnPrimitive('cube');
 });
