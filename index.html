@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chopa3D Web Platform</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #151515;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #app-container {
+            display: grid;
+            grid-template-columns: 250px 1fr 300px; /* Sidebar, Viewport, Properties */
+            grid-template-rows: 40px 1fr 200px;    /* Topbar, Viewport/Sidebars, Timeline */
+            width: 100vw;
+            height: 100vh;
+        }
+        #topbar { grid-column: 1 / -1; background: #222; border-bottom: 1px solid #333; color: #ccc; display: flex; align-items: center; padding: 0 15px; font-size: 14px; }
+        #toolbar { grid-column: 1; background: #1b1b1b; border-right: 1px solid #333; color: #aaa; padding: 15px; }
+        #viewport-container { grid-column: 2; position: relative; width: 100%; height: 100%; }
+        #properties { grid-column: 3; background: #1b1b1b; border-left: 1px solid #333; color: #aaa; padding: 15px; }
+        #timeline { grid-column: 2; background: #222; border-top: 1px solid #333; color: #666; padding: 15px; }
+        h3 { margin: 0 0 10px 0; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #888; }
+        .tool-btn { display: block; width: 100%; padding: 8px; margin-bottom: 5px; background: #2a2a2a; color: #ddd; border: 1px solid #444; border-radius: 4px; cursor: pointer; text-align: left; }
+        .tool-btn:hover { background: #3a3a3a; }
+    </style>
+</head>
+<body>
+    <div id="app-container">
+        <div id="topbar"><strong>Chopa3D</strong>&nbsp; File | Edit | Render | Help</div>
+        <div id="toolbar">
+            <h3>Tools</h3>
+            <button class="tool-btn" id="add-cube">➕ Add Cube</button>
+            <button class="tool-btn" id="add-sphere">➕ Add Sphere</button>
+        </div>
+        <div id="viewport-container"></div>
+        <div id="properties">
+            <h3>Outliner / Properties</h3>
+            <div id="gui-container"></div>
+        </div>
+        <div id="timeline">Timeline / Animation (0s - 10s)</div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
